@@ -1,2 +1,2 @@
-web_driver/*
-__pycache__ /*
+web_driver/msedgedriver.exe
+__pycache__/
