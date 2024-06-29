@@ -7,36 +7,44 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-#iniciar con url
-url = 'http://www.tcmas.mx/'
-path_dirver = os.chdir(r"C:\Users\Ernesto\Desktop\ServicioSocial\web_drivers")
-
-driver = webdriver.Edge()
-
-driver.maximize_window()
-
-driver.get(url)
-
-try:
-    el_encino_mazatlan = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div/a/h2[contains(text(), "El Encino")]')))
-
-    #print(el_encino_mazatlan.text)
+def verifica_actualizaciones(url, path_driver):
     
-    el_encino_mazatlan.click()
+    os.chdir(path_driver)
 
-    condiciones_operativas = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="menu-item"]/a[contains(text(), "Condiciones Operativas")]' ))).click()
+    driver = webdriver.Edge()
 
-    #print(condiciones_operativas.text)
+    driver.maximize_window()
 
-    calidad_gas = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="menu-item"]/a[contains(text(), "Calidad de Gas")]' )))
+    driver.get(url)
 
-    calidad_gas.click()
+    try:
+        el_encino_mazatlan = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div/a/h2[contains(text(), "El Encino")]')))
 
-    fecha_ultimo_registro = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div[@class="loadedContent"]/div[@class="row"][3]/div[2]' )))
+        #print(el_encino_mazatlan.text)
+        
+        el_encino_mazatlan.click()
 
-    print(fecha_ultimo_registro.text)
+        condiciones_operativas = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="menu-item"]/a[contains(text(), "Condiciones Operativas")]' ))).click()
 
-    time.sleep(5)
+        #print(condiciones_operativas.text)
 
-finally:
-    driver.quit()
+        calidad_gas = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="menu-item"]/a[contains(text(), "Calidad de Gas")]' )))
+
+        calidad_gas.click()
+
+        fecha_ultimo_registro = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div[@class="loadedContent"]/div[@class="row"][3]/div[2]' )))
+
+        print(fecha_ultimo_registro.text)
+
+        #time.sleep(5)
+        return fecha_ultimo_registro
+
+    finally:
+        driver.quit()
+
+url = 'http://www.tcmas.mx/'
+path_driver = r"C:\Users\Ernesto\Desktop\ServicioSocial\web_drivers"
+
+fecha = verifica_actualizaciones(url, path_driver)
+
+print(fecha)
