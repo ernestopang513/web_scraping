@@ -18,3 +18,6 @@ fecha_usuario='30/06/2024 1:45'
 resultado = comparar_y_reemplazar_fecha(fecha_usuario)
 
 print(resultado)
+
+print(os.getcwd())
+

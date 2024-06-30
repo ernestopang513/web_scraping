@@ -38,4 +38,18 @@ def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
         
         
     else:
-        print(f"El archivo {ruta_relativa} no existe.")
+        print(f"El archivo {ruta_relativa} no existe se creó uno.")
+
+        os.chdir(os.path.join(os.path.dirname(__file__), 'data'))
+
+        df = pd.DataFrame({'Fecha': [fecha_usuario]})
+
+        df.to_excel("fechas_pandas.xlsx", index =False)
+
+        os.chdir('..')
+
+      
+
+        return fecha_usuario
+
+        
