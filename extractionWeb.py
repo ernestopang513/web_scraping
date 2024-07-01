@@ -34,21 +34,21 @@ def verifica_actualizaciones(url):
 
         calidad_gas.click()
 
-        fecha_ultimo_registro = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div[@class="loadedContent"]/div[@class="row"][3]/div[2]' )))
+        fecha_ultimo_registro = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div[@class="loadedContent"]/div[@class="row"][2]/div[2]' )))
 
         print(fecha_ultimo_registro.text)
 
         #time.sleep(5)
-        return fecha_ultimo_registro
+        return fecha_ultimo_registro.text
 
     finally:
         driver.quit()
 
-url = 'http://www.tcmas.mx/'
+#url = 'http://www.tcmas.mx/'
 #path_driver = r"C:\Users\Ernesto\Desktop\ServicioSocial\web_drivers"
 
-fecha = verifica_actualizaciones(url)
+#fecha = verifica_actualizaciones(url)
 
-print(fecha)
+#print(fecha)
 
-print(os.getcwd())
+
