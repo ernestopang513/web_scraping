@@ -23,5 +23,6 @@ resultado = comparar_y_reemplazar_fecha()
 
 print(resultado)
 
-print(os.getcwd())
+#Path de trabajo
+#print(os.getcwd())
 

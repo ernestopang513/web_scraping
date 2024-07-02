@@ -27,14 +27,15 @@ def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
         # Comparar las fechas
         if fecha_usuario_dt > fecha_guardada_dt:
             # Reemplazar la fecha en el DataFrame
+            os.chdir("../data")
             df.loc[0, 'Fecha'] = fecha_usuario_dt.strftime("%d/%m/%Y %H:%M")
             # Guardar el DataFrame actualizado en el archivo Excel
             df.to_excel("fechas_pandas.xlsx", index=False)
-            return f"La fecha ingresada ({fecha_usuario}) es posterior a la fecha guardada ({fecha_guardada}). La fecha guardada ha sido actualizada."
+            return f"La fecha obteida de la web ({fecha_usuario}) es posterior a la fecha guardada ({fecha_guardada}). La fecha guardada ha sido actualizada."
         elif fecha_usuario_dt < fecha_guardada_dt:
-            return f"La fecha ingresada ({fecha_usuario}) es anterior a la fecha guardada ({fecha_guardada})."
+            return f"La fecha obteida de la web ({fecha_usuario}) es anterior a la fecha guardada ({fecha_guardada})."
         else:
-            return f"La fecha ingresada ({fecha_usuario}) es igual a la fecha guardada ({fecha_guardada})."
+            return f"La fecha obteida de la web ({fecha_usuario}) es igual a la fecha guardada ({fecha_guardada})."
         
         
     else:
