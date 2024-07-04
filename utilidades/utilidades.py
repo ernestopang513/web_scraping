@@ -3,14 +3,15 @@ from datetime import datetime
 import os
 
 def verifica_existencia_excel(ruta_relativa):
-    ruta_absoluta = os.path.join(os.path.dirname(__file__), ruta_relativa)
+    # ruta_relativa = 
+    ruta_absoluta = os.path.join(os.path.dirname(__file__), "..", ruta_relativa)
     return os.path.exists(ruta_absoluta)
 
 
 def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
     
     if verifica_existencia_excel(ruta_relativa):
-        ruta_absoluta = os.path.join(os.path.dirname(__file__), ruta_relativa)
+        ruta_absoluta = os.path.join(os.path.dirname(__file__), "..", ruta_relativa)
         df = pd.read_excel(ruta_absoluta)
         print("Contenido del archivo Excel:")
         print(df)
@@ -41,7 +42,7 @@ def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
     else:
         print(f"El archivo {ruta_relativa} no existe se creó uno.")
 
-        os.chdir(os.path.join(os.path.dirname(__file__), 'data'))
+        os.chdir(os.path.join(os.path.dirname(__file__), "..", 'data'))
 
         df = pd.DataFrame({'Fecha': [fecha_usuario]})
 

@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def verifica_actualizaciones(url):
 
-    path_driver = os.path.join(os.path.dirname(__file__), "web_driver")
+    path_driver = os.path.join(os.path.dirname(__file__), ".." , "web_driver")
     
     os.chdir(path_driver)
 

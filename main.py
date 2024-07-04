@@ -1,6 +1,6 @@
 import os
-from utilidades import *
-from extractionWeb import verifica_actualizaciones
+from utilidades.utilidades import *
+from extraccionDatos.extractionWeb import verifica_actualizaciones
 
 
 
