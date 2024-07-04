@@ -1,8 +1,0 @@
-#$x('//div[@class="menu-item"]/a[contains(text(), "Condiciones Operativas")]/text()').map(x=>x.wholeText)
-
-
-Fechas de reportes en la ruta 
-
-http://www.tcmas.mx/sistemasdegasoducto/ENC_MZT/calidaddegas
-
-$x('//div[@class="loadedContent"]/div[3]/div[2]/text()').map(x=>x.wholeText)

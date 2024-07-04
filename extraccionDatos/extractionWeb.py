@@ -43,6 +43,7 @@ def verifica_actualizaciones(url):
 
     finally:
         driver.quit()
+        # print("aqui que pasa")
 
 #url = 'http://www.tcmas.mx/'
 #path_driver = r"C:\Users\Ernesto\Desktop\ServicioSocial\web_drivers"

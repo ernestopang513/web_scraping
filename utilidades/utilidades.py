@@ -13,8 +13,8 @@ def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
     if verifica_existencia_excel(ruta_relativa):
         ruta_absoluta = os.path.join(os.path.dirname(__file__), "..", ruta_relativa)
         df = pd.read_excel(ruta_absoluta)
-        print("Contenido del archivo Excel:")
-        print(df)
+        # print("Contenido del archivo Excel:")
+        # print(df)
 
         # Leer la fecha guardada en el DataFrame
         fecha_guardada = df.loc[0, 'Fecha']
