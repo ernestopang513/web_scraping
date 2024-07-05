@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def verifica_actualizaciones(url):
 
-    path_driver = os.path.join(os.path.dirname(__file__), "web_driver")
+    path_driver = os.path.join(os.path.dirname(__file__), "..", "web_driver")
     
     os.chdir(path_driver)
 
@@ -42,7 +42,8 @@ def verifica_actualizaciones(url):
         return fecha_ultimo_registro
 
     finally:
-        driver.quit()
+        #driver.quit()
+        print("hola me deberia cerrar")
 
 url = 'http://www.tcmas.mx/'
 #path_driver = r"C:\Users\Ernesto\Desktop\ServicioSocial\web_drivers"
