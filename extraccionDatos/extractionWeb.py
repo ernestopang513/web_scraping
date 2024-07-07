@@ -42,8 +42,8 @@ def verifica_actualizaciones(url):
         return fecha_ultimo_registro.text
 
     finally:
-        driver.quit()
-        # print("aqui que pasa")
+        #driver.quit()
+        print("aqui deberia cerrarse")
 
 #url = 'http://www.tcmas.mx/'
 #path_driver = r"C:\Users\Ernesto\Desktop\ServicioSocial\web_drivers"
