@@ -59,6 +59,23 @@ def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
 
         return fecha_usuario
     
+def fecha_inicial(ultimaFecha_label):
+
+    ruta_relativa = os.path.join("data", "fechas_pandas.xlsx")
+
+    if verifica_existencia_excel(ruta_relativa):
+        ruta_absoluta = os.path.join(os.path.dirname(__file__), "..", ruta_relativa)
+        df = pd.read_excel(ruta_absoluta)
+        print("Contenido del archivo Excel:")
+        print(df)
+
+        # Leer la fecha guardada en el DataFrame
+        fecha_guardada = df.loc[0, 'Fecha']
+
+        ultimaFecha_label.configure(text=fecha_guardada)
+    else:
+        ultimaFecha_label.configure(text="No hay fecha guardada")
+
 
 
 def buscarActualizaciones(etiqueta_resultado, buttonBuscaActualizaciones, etiqueta_aviso):
@@ -71,7 +88,7 @@ def buscarActualizaciones(etiqueta_resultado, buttonBuscaActualizaciones, etique
             ruta_relativa = os.path.join("data", "fechas_pandas.xlsx")
             mensaje = abrir_y_procesar_excel(ruta_relativa, fecha)
             
-            etiqueta_resultado.configure(text=f"Fecha guardada: {fecha}")
+            etiqueta_resultado.configure(text=f"Fecha actual de la web: {fecha}")
             etiqueta_aviso.configure(text=mensaje)
 
         except Exception as e:

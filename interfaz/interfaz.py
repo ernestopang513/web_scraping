@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from utilidades.utilidades  import buscarActualizaciones
+from utilidades.utilidades  import buscarActualizaciones,fecha_inicial
 
 def crear_interfaz():
     # Configuración de la apariencia global
@@ -9,34 +9,49 @@ def crear_interfaz():
     # Crear la ventana principal
     root = ctk.CTk()
     root.title("Obtención de datos El Encino")
-    root.geometry("400x300")
+    root.geometry("800x300")
 
     # Paleta de colores CFE
     negro_cfe = "#000000"
-    verde_cfe = "#006341"
+    verde_cfe = "#008A57"
     blanco_cfe = "#FFFFFF"
     gris_cfe = "#A5A5A5"
 
     # Crear una etiqueta
     label = ctk.CTkLabel(root, text="Última fecha de evento guardada", font=("Arial", 16), text_color=verde_cfe)
-    label.pack(pady=10, anchor="w")
+    label.pack(padx =20, pady=10, anchor="w")
 
     # Crear una etiqueta para la última fecha
-    ultimaFecha_label = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=gris_cfe)
-    ultimaFecha_label.pack(anchor="w")
+    ultimaFecha_label = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=negro_cfe)
+    ultimaFecha_label.pack(anchor="w", padx =20)
+    fecha_inicial(ultimaFecha_label)
 
     # Crear un botón para buscar actualizaciones
     # buttonBuscaActualizaciones = ctk.CTkButton(root, text="Buscar Actualizaciones El Encino", command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones))
-    buttonBuscaActualizaciones = ctk.CTkButton(root, text="Buscar Actualizaciones El Encino", command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones,etiqueta_aviso))
-    buttonBuscaActualizaciones.pack(pady=10, anchor="w")
+    #f = ctk.CTkFrame(root)
+    
+    #f.pack( pady=10, anchor="w",padx =20, )
+    buttonBuscaActualizaciones = ctk.CTkButton(
+        root, 
+        height= 20,
+        width= 200,
+        #hover_color= "white", 
+        text="Buscar Actualizaciones El Encino", 
+        command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones,etiqueta_aviso),
+        fg_color=verde_cfe,
+        #corner_radius= 100
+        )
+  
+    buttonBuscaActualizaciones.pack(padx = 20 , anchor= "w")
+    
 
     # Crear una etiqueta para el resultado
     #global etiqueta_resultado
     etiqueta_resultado = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=negro_cfe)
-    etiqueta_resultado.pack(pady=10, anchor="w")
+    etiqueta_resultado.pack(pady=10, anchor="w", padx = 20)
     
     etiqueta_aviso = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=gris_cfe)
-    etiqueta_aviso.pack(pady=10, anchor="w")
+    etiqueta_aviso.pack(pady=10, anchor="w", padx = 20)
 
     # Ejecutar el bucle principal de la ventana
     root.mainloop()
