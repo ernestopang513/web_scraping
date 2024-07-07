@@ -1,6 +1,11 @@
 import pandas as pd
 from datetime import datetime
 import os
+from tkinter import messagebox
+from datetime import datetime
+import threading
+from extraccionDatos.extractionWeb import verifica_actualizaciones
+
 
 def verifica_existencia_excel(ruta_relativa):
     # ruta_relativa = 
@@ -53,5 +58,27 @@ def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
       
 
         return fecha_usuario
+    
+
+
+def buscarActualizaciones(etiqueta_resultado, buttonBuscaActualizaciones, etiqueta_aviso):
+    etiqueta_resultado.configure(text="Buscando actualizaciones...")
+    
+    def tarea():
+        buttonBuscaActualizaciones.configure(state="disabled")
+        try:
+            fecha = verifica_actualizaciones('http://www.tcmas.mx/')
+            ruta_relativa = os.path.join("data", "fechas_pandas.xlsx")
+            mensaje = abrir_y_procesar_excel(ruta_relativa, fecha)
+            
+            etiqueta_resultado.configure(text=f"Fecha guardada: {fecha}")
+            etiqueta_aviso.configure(text=mensaje)
+
+        except Exception as e:
+            messagebox.showerror(message=f"Algo salió mal {e}", title="Error")
+        finally:
+            buttonBuscaActualizaciones.configure(state="normal")
+    hilo = threading.Thread(target=tarea)
+    hilo.start()
 
         
