@@ -16,41 +16,48 @@ def crear_interfaz():
     verde_cfe = "#008A57"
     blanco_cfe = "#FFFFFF"
     gris_cfe = "#A5A5A5"
+    gris_claro = "#F0F0F0"
+
+
+    opciones_frame = ctk.CTkFrame(root, fg_color=gris_cfe, width= 100)
+
+    #Situa el frame a la izquieta
+    opciones_frame.pack(side = ctk.LEFT, fill = "y")
+    
+    # Lo siguiente manda todito a la derecha
+    #opciones_frame.pack(anchor= "w")
+    principal_frame = ctk.CTkFrame(root, fg_color=blanco_cfe )
+    principal_frame.pack(side = ctk.LEFT, expand = True, fill = ctk.BOTH)
+    # principal_frame.pack( anchor = ctk.W, fill = "y")
 
     # Crear una etiqueta
-    label = ctk.CTkLabel(root, text="Última fecha de evento guardada", font=("Arial", 16), text_color=verde_cfe)
+    label = ctk.CTkLabel(principal_frame, text="Última fecha de evento guardada", font=("Arial", 16), text_color=verde_cfe)
     label.pack(padx =20, pady=10, anchor="w")
 
-    # Crear una etiqueta para la última fecha
-    ultimaFecha_label = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=negro_cfe)
-    ultimaFecha_label.pack(anchor="w", padx =20)
-    fecha_inicial(ultimaFecha_label)
-
-    # Crear un botón para buscar actualizaciones
-    # buttonBuscaActualizaciones = ctk.CTkButton(root, text="Buscar Actualizaciones El Encino", command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones))
-    #f = ctk.CTkFrame(root)
     
-    #f.pack( pady=10, anchor="w",padx =20, )
+    ultimaFecha_label = ctk.CTkLabel(principal_frame, text="", font=("Arial", 14), text_color=negro_cfe)
+    ultimaFecha_label.pack(anchor="w", padx =20)
+
     buttonBuscaActualizaciones = ctk.CTkButton(
-        root, 
+        principal_frame, 
         height= 20,
         width= 200,
-        #hover_color= "white", 
+        
         text="Buscar Actualizaciones El Encino", 
-        command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones,etiqueta_aviso),
+        #command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones,etiqueta_aviso),
+        command= lambda : print("Click en buscar actualizaciones"),
         fg_color=verde_cfe,
-        #corner_radius= 100
+      
         )
   
     buttonBuscaActualizaciones.pack(padx = 20 , anchor= "w")
     
 
-    # Crear una etiqueta para el resultado
-    #global etiqueta_resultado
-    etiqueta_resultado = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=negro_cfe)
+    
+    etiqueta_resultado = ctk.CTkLabel(principal_frame, text="", font=("Arial", 14), text_color=negro_cfe)
     etiqueta_resultado.pack(pady=10, anchor="w", padx = 20)
     
-    etiqueta_aviso = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=gris_cfe)
+    etiqueta_aviso = ctk.CTkLabel(principal_frame, text="", font=("Arial", 14), text_color=gris_cfe)
     etiqueta_aviso.pack(pady=10, anchor="w", padx = 20)
 
     # Ejecutar el bucle principal de la ventana
