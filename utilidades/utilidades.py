@@ -78,7 +78,7 @@ def fecha_inicial(ultimaFecha_label):
 
 
 
-def buscarActualizaciones(etiqueta_resultado, buttonBuscaActualizaciones, etiqueta_aviso):
+def buscarActualizaciones(etiqueta_resultado, buttonBuscaActualizaciones, etiqueta_aviso, ultimaFecha_label):
     etiqueta_resultado.configure(text="Buscando actualizaciones...")
     
     def tarea():
@@ -87,7 +87,7 @@ def buscarActualizaciones(etiqueta_resultado, buttonBuscaActualizaciones, etique
             fecha = verifica_actualizaciones('http://www.tcmas.mx/')
             ruta_relativa = os.path.join("data", "fechas_pandas.xlsx")
             mensaje = abrir_y_procesar_excel(ruta_relativa, fecha)
-            
+            ultimaFecha_label.configure(text = fecha)
             etiqueta_resultado.configure(text=f"Fecha actual de la web: {fecha}")
             etiqueta_aviso.configure(text=mensaje)
 

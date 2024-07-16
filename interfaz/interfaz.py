@@ -17,7 +17,7 @@ def crear_interfaz():
     blanco_cfe = "#FFFFFF"
     gris_cfe = "#A5A5A5"
 
-    # Crear una etiqueta
+    # Crear una etiqueta de titulo
     label = ctk.CTkLabel(root, text="Última fecha de evento guardada", font=("Arial", 16), text_color=verde_cfe)
     label.pack(padx =20, pady=10, anchor="w")
 
@@ -27,17 +27,14 @@ def crear_interfaz():
     fecha_inicial(ultimaFecha_label)
 
     # Crear un botón para buscar actualizaciones
-    # buttonBuscaActualizaciones = ctk.CTkButton(root, text="Buscar Actualizaciones El Encino", command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones))
-    #f = ctk.CTkFrame(root)
     
-    #f.pack( pady=10, anchor="w",padx =20, )
     buttonBuscaActualizaciones = ctk.CTkButton(
         root, 
         height= 20,
         width= 200,
         #hover_color= "white", 
         text="Buscar Actualizaciones El Encino", 
-        command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones,etiqueta_aviso),
+        command= lambda : buscarActualizaciones(etiqueta_resultado,buttonBuscaActualizaciones,etiqueta_aviso, ultimaFecha_label),
         fg_color=verde_cfe,
         #corner_radius= 100
         )
@@ -46,10 +43,10 @@ def crear_interfaz():
     
 
     # Crear una etiqueta para el resultado
-    #global etiqueta_resultado
     etiqueta_resultado = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=negro_cfe)
     etiqueta_resultado.pack(pady=10, anchor="w", padx = 20)
     
+    #El texto de la 'etiqueta aviso' se genera en la funcion abrir_y_procesar_excel pero es insertado en la funcion buscarActualizaciones 
     etiqueta_aviso = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=gris_cfe)
     etiqueta_aviso.pack(pady=10, anchor="w", padx = 20)
 
