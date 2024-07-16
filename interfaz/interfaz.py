@@ -47,7 +47,8 @@ def crear_interfaz():
     etiqueta_resultado.pack(pady=10, anchor="w", padx = 20)
     
     #El texto de la 'etiqueta aviso' se genera en la funcion abrir_y_procesar_excel pero es insertado en la funcion buscarActualizaciones 
-    etiqueta_aviso = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=gris_cfe)
+
+    etiqueta_aviso = ctk.CTkLabel(root, text="", font=("Arial", 14), text_color=gris_cfe, justify = ctk.LEFT)
     etiqueta_aviso.pack(pady=10, anchor="w", padx = 20)
 
     # Ejecutar el bucle principal de la ventana

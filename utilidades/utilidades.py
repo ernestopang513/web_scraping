@@ -37,7 +37,7 @@ def abrir_y_procesar_excel(ruta_relativa, fecha_usuario):
             df.loc[0, 'Fecha'] = fecha_usuario_dt.strftime("%d/%m/%Y %H:%M")
             # Guardar el DataFrame actualizado en el archivo Excel
             df.to_excel("fechas_pandas.xlsx", index=False)
-            return f"La fecha obteida de la web ({fecha_usuario}) es posterior a la fecha guardada ({fecha_guardada}). La fecha guardada ha sido actualizada."
+            return f"La fecha obtenida de la web ({fecha_usuario}) es posterior a la fecha guardada ({fecha_guardada}). \nLa fecha guardada ha sido actualizada."
         elif fecha_usuario_dt < fecha_guardada_dt:
             return f"La fecha obteida de la web ({fecha_usuario}) es anterior a la fecha guardada ({fecha_guardada})."
         else:
