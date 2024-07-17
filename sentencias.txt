@@ -6,3 +6,21 @@ Fechas de reportes en la ruta
 http://www.tcmas.mx/sistemasdegasoducto/ENC_MZT/calidaddegas
 
 $x('//div[@class="loadedContent"]/div[3]/div[2]/text()').map(x=>x.wholeText)
+
+
+
+
+contenido cargado de las listas 
+
+
+
+$x('//div[@class="container-fluid"]/div[@class="loadedContent"]/div[@class="row"]/div[@class="tableColShaded col-lg-8 col-md-7 col-sm-6"]/a/text()').map(x=>x.wholeText)
+
+Para la expresion de arriba se turnan las celdas en shaded y unshaded
+
+con lo tanto con que este la primera que es shaded ya tengo lel contenido que quiero
+
+Ahora para iterar en los nombres es con: 
+
+$x('//div[@class="container-fluid"]/div[@class="loadedContent"]/div[@class="row"][2]/div/a/text()').map(x=>x.wholeText)
+

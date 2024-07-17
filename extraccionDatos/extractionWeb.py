@@ -26,7 +26,7 @@ def verifica_actualizaciones(url):
         
         el_encino_mazatlan.click()
 
-        condiciones_operativas = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="menu-item"]/a[contains(text(), "Condiciones Operativas")]' ))).click()
+        WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="menu-item"]/a[contains(text(), "Condiciones Operativas")]' ))).click()
 
         #print(condiciones_operativas.text)
 
@@ -34,11 +34,25 @@ def verifica_actualizaciones(url):
 
         calidad_gas.click()
 
-        fecha_ultimo_registro = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//div[@class="loadedContent"]/div[@class="row"][2]/div[2]' )))
+        WebDriverWait(driver, 30).until(EC.presence_of_all_elements_located(
+            (By.XPATH, '//div[@class="container-fluid"]/div[@class="loadedContent"]/div[@class="row"]/div[@class="tableColShaded col-lg-8 col-md-7 col-sm-6"]' )))
 
-        print(fecha_ultimo_registro.text)
+        for i in [1, 2, 3]:
+
+            titulo = WebDriverWait(driver, 30).until(EC.presence_of_element_located(
+                (By.XPATH, f'//div[@class="container-fluid"]/div[@class="loadedContent"]/div[@class="row"][{i}]/div/a' )))
+            print('bandera')
+            print(titulo.text)
+
+            if "fuera de" in titulo.text:
+                 fecha_ultimo_registro = WebDriverWait(driver, 30).until(EC.presence_of_element_located(
+                (By.XPATH, f'//div[@class="container-fluid"]/div[@class="loadedContent"]/div[@class="row"][{i}]/div[2]' )))
+                 break
+            else:
+                print('No hay fecha')
 
         #time.sleep(5)
+        # print(fecha_ultimo_registro.text)
         return fecha_ultimo_registro.text
 
     finally:
@@ -51,5 +65,5 @@ def verifica_actualizaciones(url):
 #fecha = verifica_actualizaciones(url)
 
 #print(fecha)
-
+# fecha = verifica_actualizaciones('http://www.tcmas.mx/')
 
