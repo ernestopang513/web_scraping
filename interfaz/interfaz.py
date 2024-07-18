@@ -4,10 +4,6 @@ from utilidades.utilidades  import buscarActualizaciones,fecha_inicial
 
 
 
-
-
-
-
 def crear_interfaz():
     # Configuración de la apariencia global
     ctk.set_appearance_mode("light")
@@ -37,15 +33,16 @@ def crear_interfaz():
     
     # Lo siguiente manda todito a la derecha
     #opciones_frame.pack(anchor= "w")
-    principal_frame = ctk.CTkFrame(root, fg_color=blanco_cfe )
+    principal_frame = ctk.CTkFrame(root, fg_color= blanco_cfe )
     
     principal_frame.pack(side = ctk.LEFT, expand = True, fill = ctk.BOTH)
     # principal_frame.pack( anchor = ctk.W, fill = "y")
+    inicio_page(principal_frame)
 
     def menu_click(funcion, principal_frame ,btn, *args ):
         for item in args:
             item.configure(fg_color = 'green', state= ctk.NORMAL)
-        print (f"{principal_frame.winfo_children()}")
+        # print (f"{principal_frame.winfo_children()}")
         for frame in principal_frame.winfo_children():
             frame.destroy()
 
@@ -87,7 +84,7 @@ def inicio_page(principal_frame):
 def encino_page(principal_frame):
 
     encino_frame = ctk.CTkFrame(principal_frame)
-
+    
 
 
     # Crear una etiqueta
@@ -118,4 +115,4 @@ def encino_page(principal_frame):
     
     etiqueta_aviso = ctk.CTkLabel(encino_frame, text="", font=("Arial", 14), text_color=gris_cfe)
     etiqueta_aviso.pack(pady=10, anchor="w", padx = 20)
-    encino_frame.pack()
+    encino_frame.pack(side = ctk.LEFT , expand = True, fill = 'both')
